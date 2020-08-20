@@ -15,18 +15,12 @@ namespace DiplomadoMVC_Crud_HTML_Helps_NoTipados.Controllers
         }
 
         [HttpPost]
-        //public ActionResult Index(FormCollection coleccion)
-        public ActionResult Index(int? cod)
-        {
-            int codigo;
-            if (cod != null)
-                codigo = int.Parse(cod.ToString());
-            else
-                codigo = 0;
-            FormCollection coleccion = new FormCollection();
+        public ActionResult Index(FormCollection coleccion)
+        { 
+            if (coleccion["Codigo"].ToString()=="") // Para evitar error del programa
+                coleccion["Codigo"] = "0";
             MantenimientoProductos mp = new MantenimientoProductos();
-            //Productos prod = mp.Recuperar(int.Parse(coleccion["Codigo"].ToString()));
-            Productos prod = mp.Recuperar(codigo);
+            Productos prod = mp.Recuperar(int.Parse(coleccion["Codigo"].ToString()));
             if (prod != null)
                 return View("ModificacionProducto", prod);
             else
@@ -34,7 +28,6 @@ namespace DiplomadoMVC_Crud_HTML_Helps_NoTipados.Controllers
         }
 
         [HttpPost]
-        //public ActionResult ModificacionProducto(Productos prod)
         public ActionResult ModificacionProducto(FormCollection coleccion)
         {
             MantenimientoProductos mp = new MantenimientoProductos();
