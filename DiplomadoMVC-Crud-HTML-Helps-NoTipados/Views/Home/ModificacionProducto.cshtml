@@ -17,16 +17,16 @@
         {
         <p>
             Código de Producto:
-            @Html.DisplayFor(Model => Model.Codigo)
-            @Html.HiddenFor(Model => Model.Codigo)
+            @Html.Display("Codigo")
+            @Html.Hidden("Codigo")
         </p>
             <p>
                 Descripción:
-                @Html.TextBoxFor(Model => Model.Descripcion)
+                @Html.TextBox("Descripcion")
             </p>
             <p>
                 Precio:
-                @Html.TextBoxFor(Model => Model.Precio)
+                @Html.TextBox("Precio")
             </p>
             <p>
                 <input type="submit" value="Confirmar" />
